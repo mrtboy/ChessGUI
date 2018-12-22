@@ -46,12 +46,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board.cs" />
+    <Compile Include="chessControll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="chessControll.Designer.cs">
+      <DependentUpon>chessControll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="drawBoard.cs" />
+    <Compile Include="enums\Colors.cs" />
+    <Compile Include="enums\MovementResult.cs" />
+    <Compile Include="Field.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoveController\CollisionHandler.cs" />
+    <Compile Include="MoveController\HitHandler.cs" />
+    <Compile Include="MoveController\IlligalMoveHandler.cs" />
+    <Compile Include="MoveController\LegalMoveHandler.cs" />
+    <Compile Include="MoveController\MoveHandlerBase.cs" />
+    <Compile Include="MoveController\NoPieceOnSourceHandler.cs" />
+    <Compile Include="MoveController\TargetOutsideHandler.cs" />
+    <Compile Include="MoveController\TargetOwnPieceHandler.cs" />
+    <Compile Include="MoveController\TurnHandler.cs" />
+    <Compile Include="Pieces\Bishop.cs" />
+    <Compile Include="Pieces\Castle.cs" />
+    <Compile Include="Pieces\King.cs" />
+    <Compile Include="Pieces\Knight.cs" />
+    <Compile Include="Pieces\Pawn.cs" />
+    <Compile Include="Pieces\Piece.cs" />
+    <Compile Include="Pieces\Queen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -76,5 +103,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
