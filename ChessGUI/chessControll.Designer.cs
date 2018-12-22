@@ -28,8 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // chessControll
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "chessControll";
+            this.Load += new System.EventHandler(this.chessControll_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.chessControll_Paint);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

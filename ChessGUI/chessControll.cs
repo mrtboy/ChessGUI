@@ -16,5 +16,20 @@ namespace ChessGUI
         {
             InitializeComponent();
         }
+
+        private void chessControll_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chessControll_Paint(object sender, PaintEventArgs e)
+        {
+            SolidBrush myBrush = new SolidBrush(Color.Black);
+            Graphics graphic;
+            graphic = this.CreateGraphics();
+            graphic.FillRectangle(myBrush, new Rectangle(2, 2, 50, 50));
+            myBrush.Dispose();
+            graphic.Dispose();
+        }
     }
 }
