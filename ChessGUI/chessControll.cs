@@ -52,8 +52,8 @@ namespace ChessGUI
                        
                      
                         e.Graphics.DrawString(field.Piece.getColor == Colors.BLACK ? field.Piece.getLetterBlack.ToString() :
-                        field.Piece.getLetterBlack.ToString(), new Font("Arial", 20), field.Piece.getColor == Colors.WHITE ? new
-                        SolidBrush(Color.White) : new SolidBrush(Color.Black), new PointF(j * 80+15,
+                        field.Piece.getLetterBlack.ToString(), new Font("Arial", 24), field.Piece.getColor == Colors.WHITE ? new
+                        SolidBrush(Color.White) : new SolidBrush(Color.Black), new PointF(j * 80+18,
                         i * 80 + 20));
                        
                     }
