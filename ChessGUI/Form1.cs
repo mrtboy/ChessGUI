@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGUI.MoveController;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,17 @@ namespace ChessGUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            lblMessage.Text = MoveMessage.showMessage;
+        }
+
+        private void chessControll1_Load(object sender, EventArgs e)
+        {
+            lblMessage.Text = MoveMessage.showMessage;
+        }
+
+        public  void controllerIsRefreshed()
+        {
+            lblMessage.Text = MoveMessage.showMessage;
 
         }
     }

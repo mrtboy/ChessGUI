@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChessGUI.enums;
+using ChessGUI.Pieces;
 
 namespace ChessGUI
 {
@@ -15,6 +16,8 @@ namespace ChessGUI
     {
         static int X = -1;
         static int Y = -1;
+        static int[] selectedField = new int[3];
+        static bool isMove = false;
         private Board board = new Board();
         public chessControll()
         {
@@ -44,9 +47,12 @@ namespace ChessGUI
                         int nextY = (i + 1) * 80;
                         bool isXInRange = x < X && X < nextX;
                         bool isYInRange = y < Y && Y < nextY;
-                        if (isXInRange && isYInRange)
+                        
+                        if (isXInRange && isYInRange && isMove)
                         {
                             myBrush = new SolidBrush(Color.Green);
+                            selectedField[0] = i;
+                            selectedField[1] = j;
                         } else
                         {
                             if (field.Color == Colors.GRAY)
@@ -96,7 +102,49 @@ namespace ChessGUI
         {
             X = e.X;
             Y = e.Y;
+            if (isMove)
+            {
+                int[] target = new int[2];
+                target = findSelectedField();
+                int x1 = selectedField[1];
+                int y1 = selectedField[0];
+                int x2 = target[1];
+                int y2 = target[0];
+                board.move(x1, y1, x2, y2);
+                Form1 form1 = new Form1();
+                form1.controllerIsRefreshed();
+                isMove = false;
+            } else
+            {
+                isMove = true;
+            }
             this.Refresh();
+         
+        }
+
+        private int[] findSelectedField()
+        {
+            int[] target = new int[2];
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    var field = board.Fields[j, i];
+                    int x = j * 80;
+                    int y = i * 80;
+                    int nextX = (j + 1) * 80;
+                    int nextY = (i + 1) * 80;
+                    bool isXInRange = x < X && X < nextX;
+                    bool isYInRange = y < Y && Y < nextY;
+
+                    if (isXInRange && isYInRange)
+                    {
+                        target[0] = i;
+                        target[1] = j;
+                    }
+                }
+            }
+            return target;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ChessGUI.MoveController
         {
             if (!isPathFree(x1, y1, x2, y2, fields))
             {
-                Console.WriteLine(MovementResult.COLLISION);
+                MoveMessage.showMessage =  MovementResult.COLLISION.ToString();
             }
             else if (nextHandler != null)
             {

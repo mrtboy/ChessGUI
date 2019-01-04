@@ -9,7 +9,7 @@ namespace ChessGUI.MoveController
         {
             if (fields[x1, y1].Piece == null)
             {
-                Console.WriteLine(MovementResult.NO_PIECE_ON_SOURCE);
+                MoveMessage.showMessage = MovementResult.NO_PIECE_ON_SOURCE.ToString();
             }
             else if (nextHandler != null)
             {

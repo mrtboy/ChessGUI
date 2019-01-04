@@ -9,7 +9,7 @@ namespace ChessGUI.MoveController
         {
             if (!(x1 <= 7 && x1 >= 0 && y1 <= 7 && y2 >= 0 && x2 <= 7 && x2 >= 0 && y2 <= 7 && y2 >= 0))
             {
-                Console.WriteLine(MovementResult.TARGET_OUTSIDE_BOARD);
+                MoveMessage.showMessage = MovementResult.TARGET_OUTSIDE_BOARD.ToString();
             }
             else if (nextHandler != null)
             {

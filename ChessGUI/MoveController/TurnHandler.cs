@@ -15,7 +15,7 @@ namespace ChessGUI.MoveController
 
             if (isFirst && fields[x1,y1].Piece.getColor != Colors.WHITE)
             {
-                Console.WriteLine(MovementResult.NOT_ON_TURN);
+                MoveMessage.showMessage = MovementResult.NOT_ON_TURN.ToString();
             }
             else if (nextHandler != null)
             {   

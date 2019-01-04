@@ -11,8 +11,8 @@ namespace ChessGUI.MoveController
             int dx = Math.Abs(x2 - x1);
             int dy = Math.Abs(y2 - y1);
             if (fields[x1, y1].Piece.GetType() == typeof(Pawn) && fields[x2, y2].Piece != null)
-            { 
-                Console.WriteLine(MovementResult.ILLEGAL_MOVEMENT);
+            {
+                MoveMessage.showMessage =MovementResult.ILLEGAL_MOVEMENT.ToString();
             }
             else if (nextHandler != null)
             {

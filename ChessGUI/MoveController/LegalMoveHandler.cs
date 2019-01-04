@@ -11,10 +11,10 @@ namespace ChessGUI.MoveController
             {
                 fields[x2, y2].Piece = fields[x1, y1].Piece;
                 fields[x1, y1].Piece = null;
-                Console.WriteLine(MovementResult.LEGAL_MOVE);
+                MoveMessage.showMessage = MovementResult.LEGAL_MOVE.ToString();
             } else
             {
-                Console.WriteLine(MovementResult.ILLEGAL_MOVEMENT);
+                MoveMessage.showMessage = MovementResult.ILLEGAL_MOVEMENT.ToString();
             }
         }
     }

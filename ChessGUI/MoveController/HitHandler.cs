@@ -18,7 +18,7 @@ namespace ChessGUI.MoveController
             {
                 if (dx == 1 && dy == 1)
                 {
-                    Console.WriteLine(MovementResult.HIT.ToString());
+                    MoveMessage.showMessage = MovementResult.HIT.ToString();
                 }
             }
             else if (nextHandler != null)

@@ -11,7 +11,7 @@ namespace ChessGUI.MoveController
             {
                 if (fields[x1, y1].Piece.getColor == fields[x2, y2].Piece.getColor)
                 {
-                    Console.WriteLine(MovementResult.TARGET_OCCUPIED_BY_OWN_PIECE);
+                    MoveMessage.showMessage = MovementResult.TARGET_OCCUPIED_BY_OWN_PIECE.ToString();
                 }
             }
             else if (nextHandler != null)

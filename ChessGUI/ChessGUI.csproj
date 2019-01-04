@@ -68,6 +68,7 @@
     <Compile Include="MoveController\IlligalMoveHandler.cs" />
     <Compile Include="MoveController\LegalMoveHandler.cs" />
     <Compile Include="MoveController\MoveHandlerBase.cs" />
+    <Compile Include="MoveController\MoveMessage.cs" />
     <Compile Include="MoveController\NoPieceOnSourceHandler.cs" />
     <Compile Include="MoveController\TargetOutsideHandler.cs" />
     <Compile Include="MoveController\TargetOwnPieceHandler.cs" />
