@@ -8,7 +8,8 @@ namespace ChessGUI.Pieces
         public Queen(Colors color)
         {
             this.Colors = color;
-            this.LetterDisplay = 'Q';
+            this.LetterDisplayWhite = '♕';
+            this.LetterDisplayBlack = '♛';
         }
 
 

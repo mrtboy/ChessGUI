@@ -5,15 +5,23 @@ namespace ChessGUI.Pieces
 {
     public abstract class Piece
     {
-        protected char LetterDisplay { get; set; }
+        protected char LetterDisplayWhite { get; set; }
+        protected char LetterDisplayBlack { get; set; }
         protected Colors Colors { get; set; }
         protected bool HasBeenMoved { get; set; }
 
-        public char getLetter
+        public char getLetterWhite
         {
             get
             {
-                return LetterDisplay;
+                return LetterDisplayWhite;
+            }
+        }
+        public char getLetterBlack
+        {
+            get
+            {
+                return LetterDisplayBlack;
             }
         }
         public Colors getColor

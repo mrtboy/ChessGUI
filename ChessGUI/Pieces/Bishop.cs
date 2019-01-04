@@ -9,7 +9,8 @@ namespace ChessGUI.Pieces
         public Bishop(Colors color)
         {
             this.Colors = color;
-            this.LetterDisplay = 'B';
+            this.LetterDisplayWhite = '♗';
+            this.LetterDisplayBlack = '♝';
         }
 
         public override bool LegalMove(int x1, int y1, int x2, int y2)
