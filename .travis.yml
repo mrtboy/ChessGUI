@@ -1,0 +1,7 @@
+language: csharp
+mono: none
+dotnet: 4.6.1
+solution: ChessGUI.sln
+
+script:
+  - ./build.sh
