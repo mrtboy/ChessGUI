@@ -55,7 +55,7 @@ namespace ChessGUI
                         field.Piece.getLetterBlack.ToString(), new Font("Arial", 40), field.Piece.getColor == Colors.WHITE ? new
                         SolidBrush(Color.White) : new SolidBrush(Color.Black), new PointF(j * 80,
                         i * 80 + 20));
-                       
+                        graphic.Dispose();
                     }
                     else
                     {
@@ -72,16 +72,12 @@ namespace ChessGUI
                         Graphics graphic;
                         graphic = this.CreateGraphics();
                         graphic.FillRectangle(myBrush, new Rectangle(j * 80, i*80, 80, 80));
-                       
+                        graphic.Dispose();
 
                     }
-                  
+                    myBrush.Dispose();
                 }
-               
             }
-           
-            //myBrush.Dispose();
-            //graphic.Dispose();
         }
     }
 }
