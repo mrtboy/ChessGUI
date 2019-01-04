@@ -32,13 +32,13 @@
             // 
             // chessControll
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "chessControll";
-            this.Size = new System.Drawing.Size(640, 640);
+            this.Size = new System.Drawing.Size(480, 520);
             this.Load += new System.EventHandler(this.chessControll_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.chessControll_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chessControll_MouseDown);
             this.ResumeLayout(false);
 
         }

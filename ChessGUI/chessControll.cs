@@ -13,6 +13,8 @@ namespace ChessGUI
 {
     public partial class chessControll : UserControl
     {
+        static int X = -1;
+        static int Y = -1;
         private Board board = new Board();
         public chessControll()
         {
@@ -36,25 +38,35 @@ namespace ChessGUI
                     var field = board.Fields[j, i];
                     if (field.IsOccupied())
                     {
-                        if (field.Color == Colors.GRAY)
+                        int x = j * 80;
+                        int y = i * 80;
+                        int nextX = (j + 1) * 80;
+                        int nextY = (i + 1) * 80;
+                        bool isXInRange = x < X && X < nextX;
+                        bool isYInRange = y < Y && Y < nextY;
+                        if (isXInRange && isYInRange)
                         {
-                             myBrush = new SolidBrush(Color.LightGray);
-                            
-                        }
-                        else
+                            myBrush = new SolidBrush(Color.Green);
+                        } else
                         {
-                             myBrush = new SolidBrush(Color.DarkGray);
+                            if (field.Color == Colors.GRAY)
+                            {
+                                myBrush = new SolidBrush(Color.LightGray);
+
+                            }
+                            else
+                            {
+                                myBrush = new SolidBrush(Color.DarkGray);
+                            }
                         }
 
                         Graphics graphic;
                         graphic = this.CreateGraphics();
                         graphic.FillRectangle(myBrush, new Rectangle(j*80, i*80, 80, 80));
-                       
-                     
+                        
                         e.Graphics.DrawString(field.Piece.getColor == Colors.BLACK ? field.Piece.getLetterBlack.ToString() :
                         field.Piece.getLetterBlack.ToString(), new Font("Arial", 40), field.Piece.getColor == Colors.WHITE ? new
-                        SolidBrush(Color.White) : new SolidBrush(Color.Black), new PointF(j * 80,
-                        i * 80 + 20));
+                        SolidBrush(Color.White) : new SolidBrush(Color.Black), new PointF(j * 80, i * 80 + 20));
                         graphic.Dispose();
                     }
                     else
@@ -68,7 +80,7 @@ namespace ChessGUI
                         {
                             myBrush = new SolidBrush(Color.DarkGray);
                         }
-
+                        
                         Graphics graphic;
                         graphic = this.CreateGraphics();
                         graphic.FillRectangle(myBrush, new Rectangle(j * 80, i*80, 80, 80));
@@ -78,6 +90,13 @@ namespace ChessGUI
                     myBrush.Dispose();
                 }
             }
+        }
+
+        private void chessControll_MouseDown(object sender, MouseEventArgs e)
+        {
+            X = e.X;
+            Y = e.Y;
+            this.Refresh();
         }
     }
 }
