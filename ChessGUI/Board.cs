@@ -1,11 +1,13 @@
 ﻿using ChessGUI.MoveController;
 using ChessGUI.enums;
 using ChessGUI.Pieces;
+using System.Xml.Serialization;
 
 namespace ChessGUI
 {
     public class Board
     {
+        [XmlIgnore]
         public Field[,] Fields { get; set; }
 
         public Board()
@@ -14,8 +16,34 @@ namespace ChessGUI
             ColorTheBoard();
             InitFillTheBorad(Colors.BLACK, Colors.WHITE);
         }
+        public Field[] SerFields
+        {
+            get
+            {
+                Field[] serFields = new Field[64];
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        serFields[i + j * 8] = Fields[i, j];
+                    }
+                }
+                return serFields;
+            }
+            set
+            {
+                Field[] serFields = value;
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        Fields[i, j] = serFields[i + j * 8];
+                    }
+                }
+            }
+        }
 
-        void ColorTheBoard()
+       public  void ColorTheBoard()
         {
             for (int i = 0; i < 8; i++)
             {
@@ -34,7 +62,7 @@ namespace ChessGUI
             }
         }
 
-        private void InitFillTheBorad(Colors upColor, Colors downColor)
+        public void InitFillTheBorad(Colors upColor, Colors downColor)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -71,47 +99,7 @@ namespace ChessGUI
             }
         }
 
-        //public void drawBoard()
-        //{
-          
-        //    for (int i = 0; i < 8; i++)
-        //    {
-        //        for (int j = 0; j < 8; j++)
-        //        {
-                   
-        //            var field = Fields[j, i];
-        //            if (field.IsOccupied())
-        //            {
-        //                if (field.Color == Colors.GRAY)
-        //                    DrawBoard.grayBackground();
-        //                if (field.Piece.getColor == Colors.RED)
-        //                    DrawBoard.redForeground();
-        //                DrawBoard.draw(" ");
-        //                DrawBoard.draw(field.Piece.getLetter.ToString(), 1);
-        //                DrawBoard.whiteForeground();
-        //                DrawBoard.blackBackground();
-        //            }
-        //            else
-        //            {
-        //                if (field.Color == Colors.GRAY)
-        //                    DrawBoard.grayBackground();
-        //                DrawBoard.draw(" ", 2);
-        //                DrawBoard.blackBackground();
-
-        //            }
-        //            if (j == 7)
-        //            {
-        //                DrawBoard.drawMidLine();
-        //            }
-        //        }
-        //        DrawBoard.nextLine();
-        //        if (i < 7)
-        //        {
-        //            DrawBoard.drawLine();
-        //        }
-        //    }
-        //    DrawBoard.drawButtomLine();
-        //}
+        
 
         public void move(int x1, int y1, int x2, int y2)
         {

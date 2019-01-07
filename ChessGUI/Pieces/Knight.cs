@@ -11,7 +11,10 @@ namespace ChessGUI.Pieces
             this.LetterDisplayWhite = '♘';
             this.LetterDisplayBlack = '♞';
         }
-
+        public Knight()
+        {
+            
+        }
         public override bool LegalMove(int x1, int y1, int x2 , int y2)
         {
             int dx = Math.Abs(x2 - x1);

@@ -1,14 +1,23 @@
 ﻿using ChessGUI.enums;
-
+using System.Xml.Serialization;
 
 namespace ChessGUI.Pieces
 {
+
+    [System.Serializable]
+    [XmlInclude(typeof(Piece))]
+    [XmlInclude(typeof(Bishop))]
+    [XmlInclude(typeof(Castle))]
+    [XmlInclude(typeof(King))]
+    [XmlInclude(typeof(Knight))]
+    [XmlInclude(typeof(Pawn))]
+    [XmlInclude(typeof(Queen))]
     public abstract class Piece
     {
-        protected char LetterDisplayWhite { get; set; }
-        protected char LetterDisplayBlack { get; set; }
-        protected Colors Colors { get; set; }
-        protected bool HasBeenMoved { get; set; }
+        public char LetterDisplayWhite { get; set; }
+        public char LetterDisplayBlack { get; set; }
+        public Colors Colors { get; set; }
+        public bool HasBeenMoved { get; set; }
 
         public char getLetterWhite
         {

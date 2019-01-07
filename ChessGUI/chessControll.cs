@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChessGUI.enums;
 using ChessGUI.Pieces;
+using System.Xml.Linq;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace ChessGUI
 {
@@ -146,5 +149,54 @@ namespace ChessGUI
             }
             return target;
         }
+        public void XmlSave()
+        {
+           
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Application.StartupPath;
+            saveFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create);
+                XmlSerializer mser = new XmlSerializer(typeof(Field[]));
+                mser.Serialize(fileStream,board.SerFields);
+                fileStream.Close();
+            }
+        }
+
+        public void XmlLoad()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Stream openFileStream = File.OpenRead(openFileDialog.FileName);
+                XmlSerializer deserializer = new XmlSerializer(typeof(Field[]));
+                board.SerFields = (Field[])deserializer.Deserialize(openFileStream);
+                openFileStream.Close();
+                FillBoard(board.SerFields);
+                this.Refresh();
+               
+            }
+           
+        }
+
+        void FillBoard(Field[] serFields)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    board.Fields[i,j] = serFields[i + j * 8];
+                }
+            }
+        }
+        public void NewGame()
+        {
+            board.ColorTheBoard();
+            board.InitFillTheBorad(Colors.BLACK, Colors.WHITE);
+            this.Refresh();
+
+        }
+
     }
 }

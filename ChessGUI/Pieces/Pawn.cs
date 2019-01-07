@@ -11,6 +11,10 @@ namespace ChessGUI.Pieces
             this.LetterDisplayWhite = '♙';
             this.LetterDisplayBlack = '♟';
         }
+        public Pawn()
+        {
+            
+        }
 
         public override bool LegalMove(int x1, int y1, int x2, int y2)
         {
